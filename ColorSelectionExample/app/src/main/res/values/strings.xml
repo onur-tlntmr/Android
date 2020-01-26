@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ColorSelectionExample</string>
+    <string name="strSave">Kaydet</string>
+    <string name="strLoad">Yükle</string>
+    <string name="strAbout">Yardım</string>
+
+</resources>

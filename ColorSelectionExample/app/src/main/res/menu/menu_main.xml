@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/strLoad"  android:id="@+id/mnuLoad"/>
+    <item android:title="@string/strSave" android:id="@+id/mnuSave"/>
+    <item android:title="@string/strAbout" android:id="@+id/mnuAbout"/>
+</menu>
