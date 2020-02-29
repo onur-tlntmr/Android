@@ -28,7 +28,7 @@ public class BasketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         this.onBasketListener = onBasketListener;
     }
 
-    //Fragment ile gevsek bag olusturan ve tiklanan nesnenin indexini gondere bilmek icin kullanılan interface
+    //Fragment ile gevsek bag olusturan ve tiklanan nesnenin indexini gonderebilmek icin kullanılan interface
     public interface OnBasketListener {
         void basketOnclick(int position);
     }
