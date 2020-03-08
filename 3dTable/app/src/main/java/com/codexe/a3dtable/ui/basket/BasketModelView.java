@@ -41,4 +41,10 @@ public class BasketModelView extends ViewModel {
         products.setValue(list);
     }
 
+    public void removeProduct(Product p) {
+        list.remove(p);
+        products.setValue(list);
+    }
+
+
 }

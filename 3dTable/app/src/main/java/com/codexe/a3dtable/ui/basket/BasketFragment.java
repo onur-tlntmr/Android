@@ -34,6 +34,7 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
     private ArrayList<Product> products;
     private BasketAdapter adapter;
 
+    private MutableLiveData<ArrayList<Product>> mutableLiveData;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -41,11 +42,22 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
         navController = Navigation.findNavController(view);
     }
 
+
+    private void render() {
+        adapter = new BasketAdapter(getContext(), products, BasketFragment.this); //adapter'tan gelen pozisyon bilgisini kullanmak icin kendi referansimizi veriyoruz
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
+        System.gc();
+    }
+
     private void init(View root) {
 
-        MutableLiveData<ArrayList<Product>> mutableLiveData;
+        mViewModel = new ViewModelProvider(requireActivity()).get(BasketModelView.class);
 
-        mutableLiveData = new ViewModelProvider(requireActivity()).get(BasketModelView.class).getProducts(); //Sepetteki urunleri aldigimiz sinif
+        mutableLiveData = mViewModel.getProducts(); //Sepetteki urunleri aldigimiz sinif
 
         products = mutableLiveData.getValue();
 
@@ -54,16 +66,10 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
         layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
 
 
-        mutableLiveData.observe(getActivity(), new Observer<ArrayList<Product>>() { //Sepetteki veride bir degisiklik olursa ui guncelliyoruz
+        mutableLiveData.observe(requireActivity(), new Observer<ArrayList<Product>>() { //Sepetteki veride bir degisiklik olursa ui guncelliyoruz
             @Override
             public void onChanged(ArrayList<Product> products) {
-                adapter = new BasketAdapter(getContext(), products, BasketFragment.this); //adapter'tan gelen posizyon bilgisni kullanmak icin kendi referansimizi veriyoruz
-
-                recyclerView.setAdapter(adapter);
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setHasFixedSize(true);
-
-                System.gc();
+                render();
             }
         });
 
@@ -84,23 +90,27 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
 
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(BasketModelView.class);
-    }
+
 
     @Override
-    public void basketOnclick(int position) {  // tiklama eventi ile yakaklanan index bilgisini veren metot
+    public void basketOnclick(int position, int id) {  // tiklama eventi ile yakaklanan index bilgisini veren metot
+
+        Product product = products.get(position);
 
 
-        Log.v("csd", "basketOnClick");
+        if (id == R.id.fr_basket_btn_delete) { // Eğer sil butonuna tiklanmis ise
+            Log.w("BasketFragment", "Btn_Delete event handling");
+            mViewModel.removeProduct(product);
+        } else { // yada detayı icin urun'e tiklanmis ise
 
-        SelectedProductVM selectedProductVM = new ViewModelProvider(getActivity()).get(SelectedProductVM.class); //viewmodeli instace ediyoruz
+            SelectedProductVM selectedProductVM = new ViewModelProvider(requireActivity()).get(SelectedProductVM.class); //viewmodeli instace ediyoruz
 
-        selectedProductVM.setProduct(products.get(position)); // secilen urun bilgisini tiklanmis gibi gosteriyoruz
+            selectedProductVM.setProduct(product); // secilen urun bilgisini tiklanmis gibi gosteriyoruz
 
-        navController.navigate(R.id.action_nav_basketFragment_to_nav_productDetail); // secilen urunle birlikte goruntulemesini sagliyoruz
+            navController.navigate(R.id.action_nav_basketFragment_to_nav_productDetail); // secilen urunle birlikte goruntulemesini sagliyoruz
+        }
+
+
 
     }
 }

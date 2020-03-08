@@ -30,7 +30,7 @@ public class BasketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     //Fragment ile gevsek bag olusturan ve tiklanan nesnenin indexini gonderebilmek icin kullanılan interface
     public interface OnBasketListener {
-        void basketOnclick(int position);
+        void basketOnclick(int position, int id);
     }
 
     public static class ProductHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -51,12 +51,12 @@ public class BasketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
             this.onBasketListener = onBasketListener;
             itemView.setOnClickListener(this);
-
+            btnDelete.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            onBasketListener.basketOnclick(getAdapterPosition()); // tiklanan urunun numarasini listener referansina tasiyoruz
+            onBasketListener.basketOnclick(getAdapterPosition(), v.getId()); // tiklanan urunun numarasini listener referansina tasiyoruz
         }
     }
 
