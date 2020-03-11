@@ -21,4 +21,11 @@
     <string name="btn_add_to_basket">Sepete Ekle</string>
     <string name="fragment_product_detail">Ürün Detayı</string>
     <string name="fragment_basket">Sepetim</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="login_sign_up">"Kayıt Ol"</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

@@ -13,7 +13,7 @@ import com.codexe.a3dtable.MainActivity;
 
 public class LoginControl extends AsyncTask<Void, Void, Boolean> {
 
-    private Context context;
+    private Context context; //Activity baslatmak icin gerekli
 
     private ProgressBar progressBar;
 
@@ -25,7 +25,7 @@ public class LoginControl extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected void onPreExecute() {
-        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE); //Evvelce gizli olan pb'yi tekrar gorunur yapiyoruz
     }
 
 

@@ -52,20 +52,30 @@
                 android:layout_height="wrap_content"
 
                 android:layout_columnSpan="3"
-
-                android:onClick="BtnLogin_Click"
                 android:text="@string/btnLogin" />
 
-            <ProgressBar
-                android:id="@+id/PrgbarLoading"
+            <TextView
+                android:id="@+id/fr_login_txt_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:indeterminate="true"
-                android:visibility="invisible" />
+                android:fontFamily="@font/roboto_bold"
+                android:textSize="20sp"
+                android:text="@string/login_sign_up"
+                android:textColor="#000080"
+                android:layout_marginLeft="10dp" />
 
         </LinearLayout>
 
-
+        <ProgressBar
+            android:id="@+id/ac_login_progressbar"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="invisible" />
     </GridLayout>
 
 
