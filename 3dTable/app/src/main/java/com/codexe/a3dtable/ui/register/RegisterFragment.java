@@ -62,7 +62,7 @@ public class RegisterFragment extends Fragment { //Yeni kayit yapilmasini saglay
         @Override
         public void afterTextChanged(Editable s) { // degisimden sonra sayacın istenilen degerine gelip gelmedigini kontrol eder
 
-            if (entry_data_edit == 7) { // eger tumu doldurulmus ise
+            if (entry_data_edit == editTexts.size()) { // eger tumu doldurulmus ise
                 btn_register.setEnabled(true); // butonu aktif et
             } else {//dolmamis ise
                 btn_register.setEnabled(false); //butonu  pasif yap
@@ -156,9 +156,7 @@ public class RegisterFragment extends Fragment { //Yeni kayit yapilmasini saglay
 
                 SampleDB sampleDB = SampleDB.getInstance();
                 sampleDB.insertUser(createUser());
-
                 transaction.replace(R.id.container, LoginFragment.newInstance()).commitNow();
-
 
             }
         });
