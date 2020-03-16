@@ -15,7 +15,7 @@
         <TextView
             android:layout_row="0"
             android:layout_column="0"
-            android:text="@string/txtMail" />
+            android:text="@string/mail" />
 
 
         <EditText
@@ -29,7 +29,7 @@
         <TextView
             android:layout_row="1"
             android:layout_column="0"
-            android:text="@string/txtPassword" />
+            android:text="@string/passwd" />
 
 
         <EditText
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_columnSpan="3"
-                android:text="@string/btnLogin" />
+                android:text="@string/Login" />
 
             <TextView
                 android:id="@+id/fr_login_txt_register"

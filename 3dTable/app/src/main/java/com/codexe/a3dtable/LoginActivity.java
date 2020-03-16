@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.codexe.a3dtable.ui.login.LoginFragment;
 
+
 public class LoginActivity extends AppCompatActivity {
 
     @Override
@@ -15,7 +16,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
         if (savedInstanceState == null) {
-
 
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, LoginFragment.newInstance())

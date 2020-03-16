@@ -13,7 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -31,7 +30,7 @@ public class LoginFragment extends Fragment {
     private ProgressBar progressBar;
     private TextView txt_register;
     private FragmentTransaction transaction;
-    private FragmentManager fragmentManager;
+
 
     private void init(View root) {
         edt_usr_name = root.findViewById(R.id.ac_login_mail);
@@ -85,8 +84,9 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("fr_login_txtregister", "Clicked!");
-
                 transaction.replace(R.id.container, RegisterFragment.newInstance()).commitNow();
+                Log.d("fr_login_txtregister", "Clicked- after!");
+
             }
         });
     }
