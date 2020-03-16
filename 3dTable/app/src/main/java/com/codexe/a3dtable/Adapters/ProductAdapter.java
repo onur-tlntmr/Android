@@ -30,10 +30,10 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     public interface OnProductListener { // Click ile secilen pozisyonu fragment'a taşımak için kullanılan interface
-        void onProductClick(int position); //Clicck eventi ise tiklanınca pozisyon bilgisini tutar
+        void onProductClick(int position); //Click eventi ise tiklanınca pozisyon bilgisini tutar
     }
 
-    public static class ProductHolder extends RecyclerView.ViewHolder implements View.OnClickListener { //click eventindeki bilgiyi
+    public static class ProductHolder extends RecyclerView.ViewHolder implements View.OnClickListener { //click eventindeki bilgiyi tutar
 
 
         public CardView cardView;
