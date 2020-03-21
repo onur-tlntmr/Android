@@ -5,16 +5,29 @@ import java.util.Date;
 
 public class User implements Serializable {
 
-    private String user_name, password, mail, phone_number;
+    private String name;
+    private String password;
+    private String mail;
+    private String phone_number;
+    private String sur_name;
     private Address address;
     private Date birth_date;
 
-    public String getUser_name() {
-        return user_name;
+
+    public String getSur_name() {
+        return sur_name;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setSur_name(String sur_name) {
+        this.sur_name = sur_name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {

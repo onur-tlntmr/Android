@@ -62,7 +62,7 @@ public class LoginControl extends AsyncTask<Void, Void, Boolean> {
             Intent intent = new Intent(context, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-            intent.putExtra("userMail", "onurt@codexe.com");
+            intent.putExtra("userMail", mail);
 
             context.startActivity(intent);
 

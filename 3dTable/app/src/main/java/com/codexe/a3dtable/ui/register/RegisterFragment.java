@@ -183,7 +183,8 @@ public class RegisterFragment extends Fragment { //Yeni kayit yapilmasini saglay
 
         User u = new User();
 
-        u.setUser_name(edt_name.getText().toString());
+        u.setName(edt_name.getText().toString());
+        u.setSur_name(edt_surname.getText().toString());
         u.setPassword(edt_passwd.getText().toString());
         u.setMail(edt_mail.getText().toString());
         Address address = new Address();

@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         txt_usr_name = header_view.findViewById(R.id.nav_txt_name);
         txt_mail = header_view.findViewById(R.id.nav_txt_mail);
-        txt_usr_name.setText(user.getUser_name());
+        txt_usr_name.setText(String.format("%s %s", user.getName(), user.getSur_name()));
         txt_mail.setText(user.getMail());
 
         LoginViewModel loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);

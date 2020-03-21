@@ -30,7 +30,6 @@ public class LoginFragment extends Fragment {
     private ProgressBar progressBar;
     private TextView txt_register;
     private FragmentTransaction transaction;
-    private String user_name, password;
 
     private void init(View root) {
         edt_usr_name = root.findViewById(R.id.ac_login_mail);
@@ -38,9 +37,6 @@ public class LoginFragment extends Fragment {
         btn_login = root.findViewById(R.id.ac_btn_login);
         txt_register = root.findViewById(R.id.fr_login_txt_register);
         progressBar = root.findViewById(R.id.ac_login_progressbar);
-
-        user_name = edt_usr_name.getText().toString();
-        password = edt_password.getText().toString();
 
         transaction = getActivity().getSupportFragmentManager().beginTransaction();
     }
@@ -76,6 +72,10 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 view.setEnabled(false);
+
+                String user_name = edt_usr_name.getText().toString();
+                String password = edt_password.getText().toString();
+
                 LoginControl loginControl = new LoginControl(progressBar, requireActivity(), user_name, password);
                 loginControl.execute();
 
