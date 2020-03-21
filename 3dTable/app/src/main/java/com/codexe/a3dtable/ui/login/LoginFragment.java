@@ -1,7 +1,6 @@
 package com.codexe.a3dtable.ui.login;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.codexe.a3dtable.R;
 import com.codexe.a3dtable.TestUtils.LoginControl;
+import com.codexe.a3dtable.ui.LoginViewModel;
 import com.codexe.a3dtable.ui.register.RegisterFragment;
 
 public class LoginFragment extends Fragment {
@@ -30,7 +30,7 @@ public class LoginFragment extends Fragment {
     private ProgressBar progressBar;
     private TextView txt_register;
     private FragmentTransaction transaction;
-
+    private String user_name, password;
 
     private void init(View root) {
         edt_usr_name = root.findViewById(R.id.ac_login_mail);
@@ -38,6 +38,9 @@ public class LoginFragment extends Fragment {
         btn_login = root.findViewById(R.id.ac_btn_login);
         txt_register = root.findViewById(R.id.fr_login_txt_register);
         progressBar = root.findViewById(R.id.ac_login_progressbar);
+
+        user_name = edt_usr_name.getText().toString();
+        password = edt_password.getText().toString();
 
         transaction = getActivity().getSupportFragmentManager().beginTransaction();
     }
@@ -73,8 +76,10 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 view.setEnabled(false);
-                LoginControl loginControl = new LoginControl(progressBar, requireContext());
+                LoginControl loginControl = new LoginControl(progressBar, requireActivity(), user_name, password);
                 loginControl.execute();
+
+
             }
         });
     }
@@ -83,9 +88,7 @@ public class LoginFragment extends Fragment {
         txt_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("fr_login_txtregister", "Clicked!");
                 transaction.replace(R.id.container, RegisterFragment.newInstance()).commitNow();
-                Log.d("fr_login_txtregister", "Clicked- after!");
 
             }
         });

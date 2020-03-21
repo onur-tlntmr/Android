@@ -9,18 +9,22 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.codexe.a3dtable.MainActivity;
+import com.codexe.a3dtable.model.User;
+
 
 
 public class LoginControl extends AsyncTask<Void, Void, Boolean> {
 
     private Context context; //Activity baslatmak icin gerekli
-
     private ProgressBar progressBar;
+    private String mail, passwd;
+    private User user;
 
-
-    public LoginControl(ProgressBar progressBar, Context context) {
+    public LoginControl(ProgressBar progressBar, Context context, String mail, String password) {
         this.progressBar = progressBar;
         this.context = context;
+        this.mail = mail;
+        this.passwd = password;
     }
 
     @Override
@@ -38,8 +42,16 @@ public class LoginControl extends AsyncTask<Void, Void, Boolean> {
             Log.e("csd", e.getMessage());
         }
 
+        SampleDB sampleDB = SampleDB.getInstance();
 
-        return new Boolean(true);
+        Boolean result = new Boolean(sampleDB.isRegister(mail, passwd));
+
+
+        if (result)
+            user = sampleDB.getUser(mail);
+
+
+        return result;
     }
 
     @Override
@@ -49,6 +61,8 @@ public class LoginControl extends AsyncTask<Void, Void, Boolean> {
 
             Intent intent = new Intent(context, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+            intent.putExtra("userMail", "onurt@codexe.com");
 
             context.startActivity(intent);
 

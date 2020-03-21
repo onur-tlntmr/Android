@@ -80,7 +80,6 @@ public class ProductFragment extends Fragment implements ProductAdapter.OnProduc
 
     @Override
     public void onProductClick(int position) {
-
         mViewModel.setProduct(products.get(position));
         navController.navigate(R.id.action_nav_products_to_nav_productDetail);
     }

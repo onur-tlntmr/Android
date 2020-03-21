@@ -4,7 +4,8 @@ public class Address {
 
     private String city, details;
 
-
+    public Address() {
+    }
 
     public String getCity() {
         return city;
@@ -16,6 +17,11 @@ public class Address {
 
     public String getDetails() {
         return details;
+    }
+
+    public Address(String city, String details) {
+        this.city = city;
+        this.details = details;
     }
 
     public void setDetails(String details) {

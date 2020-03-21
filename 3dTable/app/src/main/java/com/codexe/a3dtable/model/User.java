@@ -1,8 +1,9 @@
 package com.codexe.a3dtable.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
 
     private String user_name, password, mail, phone_number;
     private Address address;
