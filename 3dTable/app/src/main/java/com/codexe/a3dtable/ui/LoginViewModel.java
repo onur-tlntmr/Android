@@ -26,4 +26,9 @@ public class LoginViewModel extends ViewModel {
         mLiveData.getValue();
     }
 
+
+    public MutableLiveData<User> getLiveData() {
+        return mLiveData;
+    }
+
 }

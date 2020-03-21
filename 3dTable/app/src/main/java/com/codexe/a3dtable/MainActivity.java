@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -50,18 +51,31 @@ public class MainActivity extends AppCompatActivity {
 
         SampleDB sampleDB = SampleDB.getInstance();
 
-        User user = sampleDB.getUser(bundle.getString("userMail"));
-
-        View header_view = navigationView.getHeaderView(0);
-
-        txt_usr_name = header_view.findViewById(R.id.nav_txt_name);
-        txt_mail = header_view.findViewById(R.id.nav_txt_mail);
-        txt_usr_name.setText(String.format("%s %s", user.getName(), user.getSur_name()));
-        txt_mail.setText(user.getMail());
+        User user = sampleDB.getUser(bundle.getString("userMail")); // loginControl'den mail adresi ile girilen kullanici bilgileri çekiliyor
 
         LoginViewModel loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
-        loginViewModel.setUser(user);
+        loginViewModel.setUser(user); //girilen kullanici diger fragmentler ile de kullanilabilmesi icin loginviewmodel'e atiliyor !
+
+
+        View header_view = navigationView.getHeaderView(0);
+
+        txt_usr_name = header_view.findViewById(R.id.nav_txt_name); //gerekli textViewler aliniyor
+        txt_mail = header_view.findViewById(R.id.nav_txt_mail);
+
+
+        loginViewModel.getLiveData().observe(this, new Observer<User>() { // veri her gunclellendiginde ui da guncelleniyor
+            @Override
+            public void onChanged(User user) {
+                txt_usr_name.setText(String.format("%s %s", user.getName(), user.getSur_name()));
+                txt_mail.setText(user.getMail());
+            }
+        });
+
+
+
+
+
 
     }
 
