@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.codexe.a3dtable.ui.products.GridRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/lst"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.products.ProductFragment"></androidx.recyclerview.widget.RecyclerView>
+    tools:context=".ui.products.ProductFragment"
+    android:layoutAnimation="@anim/grid_layout_animation_from_bottom">
+
+
+</com.codexe.a3dtable.ui.products.GridRecyclerView>
