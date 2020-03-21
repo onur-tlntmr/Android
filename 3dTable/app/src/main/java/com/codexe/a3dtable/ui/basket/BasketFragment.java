@@ -43,15 +43,11 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
     }
 
 
-    private void render() {
-        adapter = new BasketAdapter(getContext(), products, BasketFragment.this); //adapter'tan gelen pozisyon bilgisini kullanmak icin kendi referansimizi veriyoruz
-
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setHasFixedSize(true);
-
-        System.gc();
-    }
+//    private void render() {
+//
+//
+//        System.gc();
+//    }
 
     private void init(View root) {
 
@@ -65,11 +61,19 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
 
         layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
 
+        adapter = new BasketAdapter(getContext(), products, BasketFragment.this); //adapter'tan gelen pozisyon bilgisini kullanmak icin kendi referansimizi veriyoruz
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+
 
         mutableLiveData.observe(requireActivity(), new Observer<ArrayList<Product>>() { //Sepetteki veride bir degisiklik olursa ui guncelliyoruz
             @Override
-            public void onChanged(ArrayList<Product> products) {
-                render();
+            public void onChanged(ArrayList<Product> newList) {
+
+                adapter.updateList(newList);
+                products = newList;
             }
         });
 

@@ -13,8 +13,6 @@ public class LoginViewModel extends ViewModel {
 
     public LoginViewModel() {
         mLiveData = new MutableLiveData<>();
-
-
     }
 
     public void setUser(User user) {
@@ -22,8 +20,8 @@ public class LoginViewModel extends ViewModel {
     }
 
 
-    public void getUser() {
-        mLiveData.getValue();
+    public User getUser() {
+        return mLiveData.getValue();
     }
 
 

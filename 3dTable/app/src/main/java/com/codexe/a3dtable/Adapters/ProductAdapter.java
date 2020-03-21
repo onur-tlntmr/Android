@@ -18,9 +18,7 @@ import java.util.ArrayList;
 public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
-
     private ArrayList<Product> products;
-
     private OnProductListener onProductListener;
 
     public ProductAdapter(Context context, ArrayList<Product> products, OnProductListener onProductListener) {
@@ -37,9 +35,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
         public CardView cardView;
-
         public TextView txtName, txtPrice;
-
         private OnProductListener onProductListener;
 
 
@@ -85,6 +81,12 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public int getItemCount() {
         return products.size();
+    }
+
+
+    public void updateList(ArrayList<Product> newList) {
+        products = newList;
+        notifyDataSetChanged();
     }
 
 

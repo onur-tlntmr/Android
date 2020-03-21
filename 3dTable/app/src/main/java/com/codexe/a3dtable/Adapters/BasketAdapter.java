@@ -81,4 +81,13 @@ public class BasketAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public int getItemCount() {
         return products.size();
     }
+
+
+    public void updateList(ArrayList<Product> newList) {
+
+        products = newList;
+        notifyDataSetChanged();
+
+    }
+
 }
