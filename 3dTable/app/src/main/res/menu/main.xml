@@ -9,11 +9,11 @@
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="android.widget.SearchView" />
 
+
     <item
         android:id="@+id/nav_basketFragment"
         android:title="@string/fragment_basket"
         app:showAsAction="always"
-        android:icon="@drawable/ic_shopping_cart_white" />
-
+        app:actionLayout="@layout/menu_item_basket" />
 
 </menu>

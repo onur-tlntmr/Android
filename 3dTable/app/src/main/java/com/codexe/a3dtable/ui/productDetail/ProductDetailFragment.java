@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.codexe.a3dtable.R;
 import com.codexe.a3dtable.model.Product;
@@ -22,14 +24,15 @@ import com.google.android.material.snackbar.Snackbar;
 //Urun detayini gosteren fragment
 public class ProductDetailFragment extends Fragment {
 
-    private TextView txtName, txtPrice, txtQuantitiy;
+    private TextView txt_name, txt_price, txt_quantity, txt_notification;
     private Button btnAddToBasket;
     private SelectedProductVM selectedProductVM;
+    private NavController navController;
 
     private void init(View v) {
-        txtName = v.findViewById(R.id.txtName);
-        txtPrice = v.findViewById(R.id.txtPrice);
-        txtQuantitiy = v.findViewById(R.id.txtQuantity);
+        txt_name = v.findViewById(R.id.txtName);
+        txt_price = v.findViewById(R.id.txtPrice);
+        txt_quantity = v.findViewById(R.id.txtQuantity);
         btnAddToBasket = v.findViewById(R.id.btnAddToBasket);
     }
 
@@ -41,15 +44,17 @@ public class ProductDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        navController = Navigation.findNavController(view);
     }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_product_detail, container, false);
-
         init(root);
         registerHandlers();
+
         return root;
     }
 
@@ -63,13 +68,12 @@ public class ProductDetailFragment extends Fragment {
         selectedProductVM.getProduct().observe(getViewLifecycleOwner(), new Observer<Product>() {
             @Override
             public void onChanged(Product p) { // secilen urun guncellendigi zaman gerekli ui guncelleniyor
-                txtName.setText("Ürün Adı: " + p.getName());
-                txtPrice.setText(p.getPrice() + " ₺");
-                txtQuantitiy.setText("Adet: " + p.getQuantity());
+                txt_name.setText("Ürün Adı: " + p.getName());
+                txt_price.setText(p.getPrice() + " ₺");
+                txt_quantity.setText("Adet: " + p.getQuantity());
 
             }
         });
-
 
     }
 
