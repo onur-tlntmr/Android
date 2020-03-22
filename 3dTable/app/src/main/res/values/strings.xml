@@ -33,6 +33,7 @@
     <string name="phone_number">Telefon Numarası</string>
     <string name="address">Adres</string>
     <string name="paswwd_not_same">Girilen şifreler aynı değil !</string>
+    <string name="add_to_basket_msg">Ürününüz Sepete Eklendi</string>
 
     <string-array name="cities">
 

@@ -27,40 +27,31 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         this.onProductListener = onProductListener;
     }
 
-    public interface OnProductListener { // Click ile secilen pozisyonu fragment'a taşımak için kullanılan interface
-        void onProductClick(int position); //Click eventi ise tiklanınca pozisyon bilgisini tutar
+    public interface OnProductListener { // Click ile secilen urunu fragment'a taşımak için kullanılan interface
+        void onProductClick(Product selected_product); //Click eventi ise tiklaninca tiklanan urunun bilgisini tutar
     }
 
-    public static class ProductHolder extends RecyclerView.ViewHolder implements View.OnClickListener { //click eventindeki bilgiyi tutar
-
+    public class ProductHolder extends RecyclerView.ViewHolder implements View.OnClickListener { //click eventindeki bilgiyi tutar
 
         public CardView cardView;
         public TextView txtName, txtPrice;
         private OnProductListener onProductListener;
 
-
         public ProductHolder(@NonNull View itemView, OnProductListener onProductListener) {
             super(itemView);
 
             cardView = itemView.findViewById(R.id.cvItem);
-
             txtName = itemView.findViewById(R.id.fr_product_txt_name);
-
             txtPrice = itemView.findViewById(R.id.fr_product_txt_price);
-
             this.onProductListener = onProductListener;
-
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-
-            onProductListener.onProductClick(getAdapterPosition());
-
+            onProductListener.onProductClick(products.get(getAdapterPosition()));
         }
     }
-
 
     @NonNull
     @Override
@@ -76,6 +67,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         ProductHolder container = (ProductHolder) holder;
         container.txtName.setText(item.getName());
         container.txtPrice.setText(item.getPrice() + " ₺");
+
     }
 
     @Override
@@ -83,11 +75,9 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return products.size();
     }
 
-
     public void updateList(ArrayList<Product> newList) {
         products = newList;
         notifyDataSetChanged();
     }
-
 
 }

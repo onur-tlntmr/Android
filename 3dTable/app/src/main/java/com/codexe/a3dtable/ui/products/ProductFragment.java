@@ -83,8 +83,8 @@ public class ProductFragment extends Fragment implements ProductAdapter.OnProduc
 
 
     @Override
-    public void onProductClick(int position) { //tiklanan urunun indexini alir
-        mViewModel.setProduct(products.get(position)); // tiklanan urunu viewmodel'e yerlestirir
+    public void onProductClick(Product selectedProduct) { //tiklanan urunu alir
+        mViewModel.setProduct(selectedProduct); // tiklanan urunu viewmodel'e yerlestirir
         navController.navigate(R.id.action_nav_products_to_nav_productDetail); // urun detayina gider
     }
 
@@ -115,7 +115,7 @@ public class ProductFragment extends Fragment implements ProductAdapter.OnProduc
                         newList.add(product); // yeni listeye eklenilir
                     }
                 }
-                products = newList; // yeni liste guncellenir ki indexler karismasin diye
+//                products = newList; // yeni liste guncellenir ki indexler karismasin diye
                 adapter.updateList(newList); //adapter sinif guncellenir
 
                 return false;
