@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageButton
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageView
         android:id="@+id/menu_item_basket_img"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/ic_shopping_cart_black"/>
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/ic_shopping_cart_white"/>
 
     <TextView
         android:id="@+id/menu_item_basket_txt_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textAlignment="center"
         android:layout_alignRight="@id/menu_item_basket_img"
         android:layout_alignTop="@id/menu_item_basket_img"
         android:background="@drawable/small_rounded_shape"

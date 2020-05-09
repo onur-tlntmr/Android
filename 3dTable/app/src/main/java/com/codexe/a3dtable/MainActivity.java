@@ -1,6 +1,7 @@
 package com.codexe.a3dtable;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -121,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 NavigationUI.onNavDestinationSelected(menuItem, navController);
+                Log.v("csd","Menu Clicked !!!");
             }
         });
 
