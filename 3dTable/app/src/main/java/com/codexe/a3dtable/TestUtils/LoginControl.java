@@ -49,8 +49,6 @@ public class LoginControl extends AsyncTask<Void, Void, Boolean> {
 
         if (result)
             user = sampleDB.getUser(mail);
-
-
         return result;
     }
 

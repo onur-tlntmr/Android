@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         final MenuItem menuItem = menu.findItem(R.id.nav_basketFragment);
         View view = menuItem.getActionView();
 
-        final TextView txt_notification = view.findViewById(R.id.menu_item_basket_txt);
+        final TextView txt_notification = view.findViewById(R.id.menu_item_basket_txt_count);
         final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
 
