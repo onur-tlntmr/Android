@@ -1,5 +1,9 @@
 package com.codexe.a3dtable.model;
 
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -68,5 +72,14 @@ public class User implements Serializable {
 
     public void setBirth_date(Date birth_date) {
         this.birth_date = birth_date;
+    }
+
+
+
+
+    @NonNull
+    @Override
+    public String toString() {
+        return getName()+"\t"+getSur_name()+"\t"+getMail()+"\t"+getPassword()+"\t"+getPhone_number()+"\t"+getAddress().getCity()+"\t"+getAddress().getDetails();
     }
 }

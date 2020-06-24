@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -187,10 +188,14 @@ public class RegisterFragment extends Fragment { //Yeni kayit yapilmasini saglay
         u.setSur_name(edt_surname.getText().toString());
         u.setPassword(edt_passwd.getText().toString());
         u.setMail(edt_mail.getText().toString());
+        u.setPhone_number(edt_phone.getText().toString());
         Address address = new Address();
         address.setCity(spn_city.getSelectedItem().toString());
         address.setDetails(edt_address.getText().toString());
         u.setAddress(address);
+
+        Log.v("fr_user",u.toString());
+
         return u;
     }
 

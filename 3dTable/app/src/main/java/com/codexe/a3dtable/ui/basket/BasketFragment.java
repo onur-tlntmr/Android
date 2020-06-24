@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,6 +34,8 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
     private NavController navController;
     private ArrayList<Product> products;
     private BasketAdapter adapter;
+    private TextView txt_price;
+    private long total_price = 0;
 
     private MutableLiveData<ArrayList<Product>> mutableLiveData;
 
@@ -43,11 +46,7 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
     }
 
 
-//    private void render() {
-//
-//
-//        System.gc();
-//    }
+
 
     private void init(View root) {
 
@@ -67,19 +66,28 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
+        txt_price = root.findViewById(R.id.fr_basket_txt_price);
+
 
         mutableLiveData.observe(requireActivity(), new Observer<ArrayList<Product>>() { //Sepetteki veride bir degisiklik olursa ui guncelliyoruz
             @Override
             public void onChanged(ArrayList<Product> newList) {
+                adapter.updateList(newList); //adaptordeki verieri guncelle
+                products = newList; // yeni listeyi degistir
+                total_price = 0; // toplam ucreti sifirla
+                products.forEach(products-> total_price += products.getPrice() ); // yeni ucretleri tekrar hesapla
 
-                adapter.updateList(newList);
-                products = newList;
+                txt_price.setText(String.format("Toplam Tutar: %d ₺",total_price)); // toplam ucreti yazdir
+
+
+
             }
         });
 
 
-    }
 
+
+    }
 
     public static BasketFragment newInstance() {
         return new BasketFragment();
@@ -93,8 +101,6 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
         return root;
 
     }
-
-
 
     @Override
     public void basketOnclick(int position, int id) {  // tiklama eventi ile yakaklanan index bilgisini veren metot

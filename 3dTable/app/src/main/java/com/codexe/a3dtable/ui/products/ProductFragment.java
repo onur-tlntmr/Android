@@ -1,6 +1,7 @@
 package com.codexe.a3dtable.ui.products;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -107,7 +108,8 @@ public class ProductFragment extends Fragment implements ProductAdapter.OnProduc
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                String input = newText.toLowerCase(); // girilen text hepsi kucukhale donusturulur
+                String input = newText.toLowerCase().trim(); // girilen text hepsi kucukhale donusturulur
+                Log.v("str_input",input);
                 ArrayList<Product> newList = new ArrayList<>(); // yeni ürünler icin yeni list yapilir
 
                 for (Product product : products) { // tum urunlerden her bir urununun adi girilen veri ile karsilastirilir
