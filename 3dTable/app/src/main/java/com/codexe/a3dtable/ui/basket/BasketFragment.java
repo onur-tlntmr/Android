@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,6 +39,9 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
     private BasketAdapter adapter;
     private TextView txt_price;
     private long total_price = 0;
+    private Button btn_complete;
+    private RelativeLayout pnl_bottom;
+
 
     private MutableLiveData<ArrayList<Product>> mutableLiveData;
 
@@ -44,8 +50,6 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
     }
-
-
 
 
     private void init(View root) {
@@ -67,7 +71,8 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
         recyclerView.setHasFixedSize(true);
 
         txt_price = root.findViewById(R.id.fr_basket_txt_price);
-
+        btn_complete = root.findViewById(R.id.fr_basket_btn_basket_confirm);
+        pnl_bottom = root.findViewById(R.id.fr_basket_bottom_pnl);
 
         mutableLiveData.observe(requireActivity(), new Observer<ArrayList<Product>>() { //Sepetteki veride bir degisiklik olursa ui guncelliyoruz
             @Override
@@ -75,22 +80,32 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
                 adapter.updateList(newList); //adaptordeki verieri guncelle
                 products = newList; // yeni listeyi degistir
                 total_price = 0; // toplam ucreti sifirla
-                products.forEach(products-> total_price += products.getPrice() ); // yeni ucretleri tekrar hesapla
+                products.forEach(products -> total_price += products.getPrice()); // yeni ucretleri tekrar hesapla
 
-                txt_price.setText(String.format("Toplam Tutar: %d ₺",total_price)); // toplam ucreti yazdir
+                if(total_price != 0)
+                    pnl_bottom.setVisibility(View.VISIBLE);
+                else
+                    pnl_bottom.setVisibility(View.INVISIBLE);
 
 
+                txt_price.setText(String.format("Toplam Tutar: %d ₺", total_price)); // toplam ucreti yazdir
 
             }
         });
 
-
-
+        btnCompleteClick();
 
     }
 
-    public static BasketFragment newInstance() {
-        return new BasketFragment();
+    private void btnCompleteClick(){
+        btn_complete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                BasketFragmentDirections.ActionNavBasketFragmentToNavOrder action = BasketFragmentDirections.actionNavBasketFragmentToNavOrder(total_price);
+                navController.navigate(action);
+            }
+        });
     }
 
     @Override
@@ -98,6 +113,9 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_basket, container, false);
         init(root);
+
+
+
         return root;
 
     }
@@ -109,9 +127,9 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
 
 
         if (id == R.id.fr_basket_btn_delete) { // Eğer sil butonuna tiklanmis ise
-            Log.w("BasketFragment", "Btn_Delete event handling");
             mViewModel.removeProduct(product);
-        } else { // yada detayı icin urun'e tiklanmis ise
+        }
+        else { // yada detayı icin urun'e tiklanmis ise
 
             SelectedProductVM selectedProductVM = new ViewModelProvider(requireActivity()).get(SelectedProductVM.class); //viewmodeli instace ediyoruz
 
@@ -119,8 +137,6 @@ public class BasketFragment extends Fragment implements BasketAdapter.OnBasketLi
 
             navController.navigate(R.id.action_nav_basketFragment_to_nav_productDetail); // secilen urunle birlikte goruntulemesini sagliyoruz
         }
-
-
-
     }
+
 }

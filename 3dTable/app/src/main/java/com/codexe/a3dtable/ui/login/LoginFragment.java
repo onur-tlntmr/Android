@@ -17,7 +17,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.codexe.a3dtable.R;
 import com.codexe.a3dtable.TestUtils.LoginControl;
-import com.codexe.a3dtable.ui.LoginViewModel;
 import com.codexe.a3dtable.ui.register.RegisterFragment;
 
 public class LoginFragment extends Fragment {

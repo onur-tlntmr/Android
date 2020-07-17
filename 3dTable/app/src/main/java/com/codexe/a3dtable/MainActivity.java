@@ -20,7 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.codexe.a3dtable.TestUtils.SampleDB;
 import com.codexe.a3dtable.model.Product;
 import com.codexe.a3dtable.model.User;
-import com.codexe.a3dtable.ui.LoginViewModel;
+import com.codexe.a3dtable.ui.login.LoginViewModel;
 import com.codexe.a3dtable.ui.basket.BasketModelView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -40,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
     private void createSession() {
         Bundle bundle = getIntent().getExtras();
         SampleDB sampleDB = SampleDB.getInstance();
-        User user = sampleDB.getUser(bundle.getString("userMail")); // loginControl'den mail adresi ile girilen kullanici bilgileri çekiliyor
+        User user = (User) bundle.getSerializable("user"); // loginControl'den mail adresi ile girilen kullanici bilgileri çekiliyor
         LoginViewModel loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+
+        Log.v("ac_main",user.toString());
 
         loginViewModel.setUser(user); //girilen kullanici diger fragmentler ile de kullanilabilmesi icin loginviewmodel'e atiliyor !
 
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_products, R.id.nav_share, R.id.nav_send)
-                .setDrawerLayout(drawer)
+                .setOpenableLayout(drawer)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -110,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
                     txt_notification.setVisibility(View.INVISIBLE);
                 } else {
                     txt_notification.setVisibility(View.VISIBLE);
-                    txt_notification.setText(String.valueOf(size));
+                    txt_notification.setText(String.valueOf(size)); //Sepet'teki urun sayisi goruntuleniyor
                 }
             }
         });
@@ -120,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 NavigationUI.onNavDestinationSelected(menuItem, navController);
-                Log.v("csd","Menu Clicked !!!");
             }
         });
 

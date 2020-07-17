@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".ui.orderInfo.OrderFragment">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <TextView
+            android:id="@+id/fr_order_txt_order_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="30dp"
+            android:text="Siparis Numarası: 54765135"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/fr_order_txt_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fr_order_txt_order_number"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:text="Alıcı: Onur T."
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/fr_order_txt_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fr_order_txt_user_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:text="Telefon Numarası: +90994445555"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/fr_order_txt_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fr_order_txt_phone"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginBottom="30dp"
+
+            android:text="Adres: Falanca mahallesi Falanca Sokak No:0/0 Semt/Memleket"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/fr_order_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fr_order_txt_address"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:text="Tutar 1345₺"
+            android:textSize="24sp" />
+
+        <CheckBox
+            android:id="@+id/fr_order_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Uzaktan Satış Sözleşmesini Okudum ve Kabul Ediyorum"
+            android:layout_below="@id/fr_order_price"
+            android:textSize="10sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            />
+
+        <Button
+            android:id="@+id/fr_order_btn"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/btn_complate_shopping"
+            android:layout_below="@id/fr_order_checkbox"
+            android:layout_centerHorizontal="true"
+            android:enabled="false"
+            />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

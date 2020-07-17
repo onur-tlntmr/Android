@@ -1,6 +1,8 @@
 package com.codexe.a3dtable.model;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
 
     private String city, details;
 
@@ -22,6 +24,17 @@ public class Address {
     public Address(String city, String details) {
         this.city = city;
         this.details = details;
+    }
+
+    public String getFullAddress(){
+
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(details);
+        sb.append('/');
+        sb.append(city);
+
+        return sb.toString();
     }
 
     public void setDetails(String details) {

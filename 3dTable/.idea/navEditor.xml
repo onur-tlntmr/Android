@@ -19,12 +19,29 @@
                         </option>
                         <option name="myPositions">
                           <map>
+                            <entry key="action_nav_basketFragment_to_nav_order">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                             <entry key="action_nav_basketFragment_to_nav_productDetail">
                               <value>
                                 <LayoutPositions />
                               </value>
                             </entry>
                           </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="nav_order">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="925" />
+                            <option name="y" value="-38" />
+                          </Point>
                         </option>
                       </LayoutPositions>
                     </value>

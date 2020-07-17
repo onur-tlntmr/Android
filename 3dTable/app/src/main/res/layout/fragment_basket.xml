@@ -24,21 +24,34 @@
     <RelativeLayout
         android:id="@+id/fr_basket_bottom_pnl"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:background="#333"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
+            android:id="@+id/fr_basket_txt_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/fr_basket_txt_price"
-            android:text="Toplam Fiyat"
-            android:textColor="@color/colorDefaultWhite"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            />
+            android:text="Toplam Fiyat"
+            android:textColor="@color/colorDefaultWhite"
+            android:textSize="20sp" />
 
+        <Button
+            android:id="@+id/fr_basket_btn_basket_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorPrimary"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/btn_complate_shopping"
+
+            />
 
     </RelativeLayout>
 

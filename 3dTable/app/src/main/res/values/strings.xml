@@ -3,8 +3,6 @@
     <string name="title_activity_main">MainActivity</string>
 
 
-
-
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -34,6 +32,10 @@
     <string name="address">Adres</string>
     <string name="paswwd_not_same">Girilen şifreler aynı değil !</string>
     <string name="add_to_basket_msg">Ürününüz Sepete Eklendi</string>
+    <string name="btn_complate_shopping">Alışverişi Tamamla</string>
+    <string name="btn_continue">Devam Et</string>
+
+    <string name="order_success">Siparişiniz başarıyla alındı</string>
 
     <string-array name="cities">
 
@@ -119,6 +121,8 @@
         <item>Yozgat</item>
         <item>Zonguldak</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

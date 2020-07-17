@@ -109,7 +109,6 @@ public class ProductFragment extends Fragment implements ProductAdapter.OnProduc
             public boolean onQueryTextChange(String newText) {
 
                 String input = newText.toLowerCase().trim(); // girilen text hepsi kucukhale donusturulur
-                Log.v("str_input",input);
                 ArrayList<Product> newList = new ArrayList<>(); // yeni ürünler icin yeni list yapilir
 
                 for (Product product : products) { // tum urunlerden her bir urununun adi girilen veri ile karsilastirilir

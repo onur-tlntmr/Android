@@ -8,9 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import androidx.lifecycle.ViewModelProvider;
+
 import com.codexe.a3dtable.MainActivity;
 import com.codexe.a3dtable.model.User;
-
+import com.codexe.a3dtable.ui.login.LoginViewModel;
 
 
 public class LoginControl extends AsyncTask<Void, Void, Boolean> {
@@ -18,7 +20,7 @@ public class LoginControl extends AsyncTask<Void, Void, Boolean> {
     private Context context; //Activity baslatmak icin gerekli
     private ProgressBar progressBar;
     private String mail, passwd;
-    private User user;
+    private User user = null;
 
     public LoginControl(ProgressBar progressBar, Context context, String mail, String password) {
         this.progressBar = progressBar;
@@ -60,7 +62,13 @@ public class LoginControl extends AsyncTask<Void, Void, Boolean> {
             Intent intent = new Intent(context, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
+
+
             intent.putExtra("userMail", mail);
+            intent.putExtra("user",user);
+
+//            Log.v("login_control","UserName: "+user);
+
 
             context.startActivity(intent);
 

@@ -1,4 +1,4 @@
-package com.codexe.a3dtable.ui;
+package com.codexe.a3dtable.ui.login;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

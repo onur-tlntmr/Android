@@ -1,12 +1,10 @@
 package com.codexe.a3dtable.TestUtils;
-
 import com.codexe.a3dtable.model.Address;
 import com.codexe.a3dtable.model.User;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class SampleDB {
 
@@ -53,10 +51,7 @@ public class SampleDB {
             user =  createAdminUser();
         }
 
-
-
         else{
-
 
             for (User u:data) {
 

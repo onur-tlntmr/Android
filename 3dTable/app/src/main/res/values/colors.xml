@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="colorCustomBlack">#17202a</color>
     <color name="colorDefaultWhite">#f2f2f2</color>
+    <color name="orange">#FF4500</color>
+    <color name="green">#43A047</color>
 </resources>

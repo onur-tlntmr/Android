@@ -20,15 +20,6 @@ public class BasketModelView extends ViewModel {
     }
 
 
-    private void init() {
-
-        list = new ArrayList<>();
-
-        for (int i = 1; i < 10; i++) {
-            addProduct(new Product("Tablo " + i, 120, 15));
-        }
-        products.setValue(list);
-    }
 
     public MutableLiveData<ArrayList<Product>> getProducts() {
         return products;
@@ -44,6 +35,11 @@ public class BasketModelView extends ViewModel {
     public void removeProduct(Product p) {
         list.remove(p);
         products.setValue(list);
+    }
+
+
+    public void clear(){
+        list.clear();
     }
 
 
